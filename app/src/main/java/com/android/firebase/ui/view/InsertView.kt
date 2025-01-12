@@ -37,8 +37,8 @@ import com.android.firebase.ui.viewmodel.InsertUiState
 import com.android.firebase.ui.viewmodel.InsertViewModel
 import com.android.firebase.ui.viewmodel.MahasiswaEvent
 import com.android.firebase.ui.viewmodel.PenyediaViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.time.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
