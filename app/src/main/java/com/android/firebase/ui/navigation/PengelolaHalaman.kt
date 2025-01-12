@@ -11,13 +11,13 @@ import com.android.firebase.ui.view.InsertMhsView
 
 @Composable
 fun PengelolaHalaman(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController()
 ) {
     NavHost(
         navController = navController,
         startDestination = DestinasiHome.route,
-        modifier = Modifier
+        modifier = modifier
     )  {
         composable(DestinasiHome.route) {
             HomeScreen(
