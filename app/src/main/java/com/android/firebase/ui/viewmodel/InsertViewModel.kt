@@ -4,14 +4,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.android.firebase.model.Mahasiswa
 import com.android.firebase.repository.MahasiswaRepository
+import kotlinx.coroutines.launch
 
 class InsertViewModel(
     private val mhs: MahasiswaRepository
 ) : ViewModel() {
 
-    var uiState: InsertUiState by mutableStateOf(InsertUiState())
+    var uiEvent: InsertUiState by mutableStateOf(InsertUiState())
         private set
 
     var uiState: FormState by mutableStateOf(FormState.Idle)
@@ -45,7 +47,7 @@ class InsertViewModel(
             viewModelScope.launch {
                 uiState = FormState.Loading
                 try {
-                    mhs.insertMhs(uiEvent.insertUiEvent.toMhsModel())
+                    mhs.insertMahasiswa(uiEvent.insertUiEvent.toMhsModel())
                     uiState = FormState.Success("Data berhasil disimpan")
                 } catch (e: Exception) {
                     uiState = FormState.Error("Data gagal disimpan")
